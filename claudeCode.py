@@ -94,7 +94,7 @@ while True:
     message_history.append({ "role": "user", "content": user_query })
 
     while True:
-        response = client.chat.completions.parse(
+        response = client.chat.completions.parse(   #yaha pe llm call hua hai
             model="gpt-4o",
             response_format=MyOutputFormat,
             messages=message_history
