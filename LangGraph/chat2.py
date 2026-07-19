@@ -25,7 +25,7 @@ def chatbot(state: State):
     state["llm_output"] = response.choices[0].message.content
     return state
 
-def evalaute_response(state: State) -> Literal["chatbot_gemini", "endnode"]:
+def evalaute_response(state: State) -> Literal["chatbot_gemini", "endnode"]: #literal is only used to decode where to go next
     print("evalaute_response Node", state)
     if False:
         return "endnode"
@@ -56,7 +56,7 @@ graph_builder.add_node("endnode", endnode)
 
 
 graph_builder.add_edge(START, "chatbot")
-graph_builder.add_conditional_edges("chatbot", evalaute_response)
+graph_builder.add_conditional_edges("chatbot", evalaute_response) #used for routine
 
 graph_builder.add_edge("chatbot_gemini", "endnode")
 graph_builder.add_edge("endnode", END)
